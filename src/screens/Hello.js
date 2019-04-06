@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
-import {APP_NAME} from '../../constants/strings'
-import {primary, primary_light} from '../../constants/colors'
+import {APP_NAME} from '../constants/strings'
+import {primary, primary_light} from '../constants/colors'
 
 class Hello extends Component {
+
+  componentDidMount(): void {
+    setTimeout(()=>{
+
+    },250);
+  }
 
   render() {
     return(
