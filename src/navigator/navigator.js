@@ -2,9 +2,12 @@ import React,{Component} from 'react'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import SplashScreen from '../screens/SplashScreen'
+import Home from '../screens/Home'
+
 
 const AppNavigator = createStackNavigator({
-  Hello: SplashScreen,
+  SplashScreen,
+  Home
 },{
   headerMode: 'none',
 });
