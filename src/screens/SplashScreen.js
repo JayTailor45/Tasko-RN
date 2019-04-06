@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
 import {APP_NAME} from '../constants/strings'
 import {primary, primary_light} from '../constants/colors'
 
-class Hello extends Component {
+class SplashScreen extends Component {
 
   componentDidMount(): void {
     setTimeout(()=>{
@@ -38,5 +38,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Hello;
+export default SplashScreen;
 
