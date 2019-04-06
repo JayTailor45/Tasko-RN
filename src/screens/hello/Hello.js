@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   tasko: {
     fontFamily: 'noteworthy',
     fontSize: 50,
-    paddingBottom: 16,
+    paddingBottom: 35,
     color: primary
   },
   loding: {
