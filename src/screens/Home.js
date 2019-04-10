@@ -6,7 +6,7 @@ import {primary, primary_light} from '../constants/colors'
 class Home extends Component {
   render(): React.ReactNode {
     return(
-        <View>
+        <View style={styles.container}>
           <Text>
             Home called
           </Text>
@@ -16,3 +16,11 @@ class Home extends Component {
 }
 
 export default Home
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
