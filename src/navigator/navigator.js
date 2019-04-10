@@ -3,11 +3,12 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import SplashScreen from '../screens/SplashScreen'
 import Home from '../screens/Home'
-
+import Login from '../screens/Login'
 
 const AppNavigator = createStackNavigator({
   SplashScreen,
-  Home
+  Home,
+  Login
 },{
   headerMode: 'none',
 });

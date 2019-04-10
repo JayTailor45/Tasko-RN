@@ -7,7 +7,7 @@ class SplashScreen extends Component {
 
   componentDidMount(): void {
     setTimeout(()=>{
-      this.props.navigation.navigate('Home');
+      this.props.navigation.navigate('Login');
     },1000);
   }
 
