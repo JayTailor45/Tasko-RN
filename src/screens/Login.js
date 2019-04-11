@@ -3,8 +3,15 @@ import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
 import {APP_NAME} from '../constants/strings'
 import {primary, primary_light} from '../constants/colors'
 import {Input, Button} from 'react-native-elements'
+import {AsyncStorage} from "react-native";
 
 class Login extends Component {
+
+  _signInAsync = async () => {
+    await AsyncStorage.setItem('userToken', 'abc');
+    this.props.navigation.navigate('AppStack');
+  };
+
   render() {
     return(
         <View style={styles.container}>
@@ -26,8 +33,9 @@ class Login extends Component {
           </View>
           <View style={styles.btns}>
             <Button
+                title="Sign in!"
                 style={styles.btn}
-                title="Login"
+                onPress={this._signInAsync}
             />
             <Button
                 style={styles.btn}

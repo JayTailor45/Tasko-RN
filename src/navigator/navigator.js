@@ -1,16 +1,22 @@
 import React,{Component} from 'react'
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator,createSwitchNavigator , createAppContainer } from 'react-navigation';
 
 import SplashScreen from '../screens/SplashScreen'
 import Home from '../screens/Home'
 import Login from '../screens/Login'
 
-const AppNavigator = createStackNavigator({
-  SplashScreen,
-  Home,
+const AuthStack = createStackNavigator({
   Login
-},{
-  headerMode: 'none',
-});
+})
 
-export default createAppContainer(AppNavigator);
+const AppStack = createStackNavigator({
+  Home
+})
+
+const Root = createSwitchNavigator({
+  SplashScreen,
+  AppStack,
+  AuthStack
+})
+
+export default createAppContainer(Root);

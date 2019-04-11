@@ -1,15 +1,25 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
+import {View, Text, StyleSheet, Button, AsyncStorage, ActivityIndicator} from 'react-native'
 import {APP_NAME} from '../constants/strings'
 import {primary, primary_light} from '../constants/colors'
 
 class Home extends Component {
-  render(): React.ReactNode {
+
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('AuthStack');
+  };
+
+  render() {
     return(
         <View style={styles.container}>
           <Text>
             Home called
           </Text>
+          <Button
+              title="I'm done, sign me out"
+              onPress={this._signOutAsync}
+          />
         </View>
     )
   }

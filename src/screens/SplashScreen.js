@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
+import {View, Text, StyleSheet, ActivityIndicator, AsyncStorage} from 'react-native'
 import {APP_NAME} from '../constants/strings'
 import {primary, primary_light} from '../constants/colors'
 
 class SplashScreen extends Component {
-
-  componentDidMount(): void {
-    setTimeout(()=>{
-      this.props.navigation.navigate('Login');
-    },1000);
+  constructor(props){
+    super(props);
+    this._bootstrapAsync();
   }
+
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('userToken');
+    this.props.navigation.navigate(userToken ? 'AppStack' : 'AuthStack');
+  };
 
   render() {
     return(
