@@ -6,13 +6,19 @@ import {primary, primary_light} from '../constants/colors'
 class SplashScreen extends Component {
   constructor(props){
     super(props);
-    this._bootstrapAsync();
+    this.showSplash();
   }
 
   _bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
     this.props.navigation.navigate(userToken ? 'AppStack' : 'AuthStack');
   };
+
+  showSplash() {
+    setTimeout(()=>{
+      this._bootstrapAsync()
+    }, 1000);
+  }
 
   render() {
     return(
