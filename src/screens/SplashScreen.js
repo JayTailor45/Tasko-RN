@@ -3,6 +3,11 @@ import {View, Text, StyleSheet, ActivityIndicator, AsyncStorage} from 'react-nat
 import {APP_NAME} from '../constants/strings'
 import {primary, primary_light} from '../constants/colors'
 
+import firebase from 'firebase'
+import {config} from "../constants/firebaseConfig";
+
+firebase.initializeApp(config);
+
 class SplashScreen extends Component {
   constructor(props){
     super(props);

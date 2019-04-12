@@ -1,32 +1,61 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
+import {View, Text, StyleSheet, ActivityIndicator, Alert} from 'react-native'
 import {APP_NAME} from '../constants/strings'
 import {primary, primary_light} from '../constants/colors'
 import {Input, Button} from 'react-native-elements'
 import {AsyncStorage} from "react-native";
 
+import firebase from 'firebase'
+
 class Login extends Component {
+  user;
+  constructor(props){
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      userId: ''
+    }
+  }
 
   _signInAsync = async () => {
-    await AsyncStorage.setItem('userToken', 'abc');
+    await AsyncStorage.setItem('userToken', this.state.userId);
     this.props.navigation.navigate('AppStack');
   };
+
+  signInFire () {
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(()=> {
+          this.user = firebase.auth().currentUser
+          this.setState({'userId': this.user.uid})
+        this._signInAsync().then({
+
+        })
+      })
+      .catch((error) => {
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        Alert.alert('Error',errorMessage);
+      });
+  }
+
 
   render() {
     return(
         <View style={styles.container}>
           <Text style={styles.tasko}>
-            Tasko
+            {APP_NAME}
           </Text>
           <View style={styles.inputView}>
             <Input
+                onChangeText={(text) => (this.setState({email: text}))}
                 placeholder='Your email'
                 errorStyle={{ color: 'red' }}
-                errorMessage='Enter valid email'
             />
           </View>
           <View style={styles.inputView}>
           <Input
+              onChangeText={(text) => (this.setState({ password: text}))}
               placeholder='Your password'
               secureTextEntry={true}
           />
@@ -35,7 +64,7 @@ class Login extends Component {
             <Button
                 title="Sign in!"
                 style={styles.btn}
-                onPress={this._signInAsync}
+                onPress={this.signInFire.bind(this)}
             />
             <Button
                 style={styles.btn}
