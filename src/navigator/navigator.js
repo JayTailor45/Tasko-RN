@@ -4,9 +4,11 @@ import { createStackNavigator,createSwitchNavigator , createAppContainer } from 
 import SplashScreen from '../screens/SplashScreen'
 import Home from '../screens/Home'
 import Login from '../screens/Login'
+import Register from '../screens/Register'
 
 const AuthStack = createStackNavigator({
-  Login
+  Login,
+  Register
 })
 
 const AppStack = createStackNavigator({

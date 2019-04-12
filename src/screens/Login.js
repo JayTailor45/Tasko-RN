@@ -24,7 +24,7 @@ class Login extends Component {
   };
 
   signInFire () {
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(()=> {
           this.user = firebase.auth().currentUser
           this.setState({'userId': this.user.uid})
@@ -62,13 +62,14 @@ class Login extends Component {
           </View>
           <View style={styles.btns}>
             <Button
-                title="Sign in!"
+                title="Log In"
                 style={styles.btn}
                 onPress={this.signInFire.bind(this)}
             />
             <Button
                 style={styles.btn}
                 title="Don't have an account?"
+                onPress={() => this.props.navigation.navigate('Register')}
             />
           </View>
         </View>

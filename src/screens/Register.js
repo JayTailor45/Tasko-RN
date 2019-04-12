@@ -1,25 +1,50 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
+import {View, Text, StyleSheet, ActivityIndicator, AsyncStorage, Alert} from 'react-native'
 import {APP_NAME} from '../constants/strings'
 import {primary, primary_light} from '../constants/colors'
 import {Input, Button} from 'react-native-elements'
 
+import firebase from 'firebase'
+
 class Login extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    }
+  }
+
+  signUpFire () {
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(()=> {
+          this.props.navigation.goBack();
+        })
+        .catch((error) => {
+          let errorCode = error.code;
+          let errorMessage = error.message;
+          Alert.alert('Error',errorMessage);
+        });
+  }
+
+
   render() {
     return(
         <View style={styles.container}>
           <Text style={styles.tasko}>
-            Tasko
+            {APP_NAME}
           </Text>
           <View style={styles.inputView}>
             <Input
+                onChangeText={(text) => (this.setState({email: text}))}
                 placeholder='Email'
                 errorStyle={{ color: 'red' }}
-                errorMessage='Enter valid email'
             />
           </View>
           <View style={styles.inputView}>
             <Input
+                onChangeText={(text) => (this.setState({ password: text}))}
                 placeholder='Password'
                 secureTextEntry={true}
             />
@@ -28,10 +53,12 @@ class Login extends Component {
             <Button
                 style={styles.btn}
                 title="Register"
+                onPress={this.signUpFire.bind(this)}
             />
             <Button
                 style={styles.btn}
                 title="Already have an account?"
+                onPress={() =>this.props.navigation.goBack()}
             />
           </View>
         </View>
