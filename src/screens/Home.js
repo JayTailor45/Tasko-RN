@@ -39,7 +39,7 @@ class Home extends Component {
                   buttonColor={primary}
                   title="New Note"
                   onPress={
-                    () => this.props.navigation.navigate('x')
+                    () => this.props.navigation.navigate('AddTask')
                   }>
                 <Icon name="check" style={styles.actionButtonIcon} />
               </ActionButton.Item>
