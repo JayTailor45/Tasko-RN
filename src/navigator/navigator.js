@@ -1,5 +1,10 @@
 import React,{Component} from 'react'
-import { createStackNavigator,createSwitchNavigator , createAppContainer } from 'react-navigation';
+import {
+  createStackNavigator,
+  createSwitchNavigator,
+  createAppContainer,
+  createDrawerNavigator
+} from 'react-navigation';
 
 import SplashScreen from '../screens/SplashScreen'
 import Home from '../screens/Home'
@@ -11,9 +16,14 @@ const AuthStack = createStackNavigator({
   Register
 },{headerMode: 'none'})
 
-const AppStack = createStackNavigator({
+const DrawerStack = createDrawerNavigator({
   Home
 })
+
+const AppStack = createStackNavigator({
+  DrawerStack
+})
+
 
 const Root = createSwitchNavigator({
   SplashScreen,
