@@ -24,6 +24,8 @@ class Home extends Component {
               onPress={this._signOutAsync}
           />
 
+          <TaskListItem/>
+
           <View style={styles.fabContainer}>
             <ActionButton buttonColor="black">
               <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
