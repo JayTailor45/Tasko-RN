@@ -28,10 +28,10 @@ class Home extends Component {
 
           <View style={styles.fabContainer}>
             <ActionButton buttonColor="black">
-              <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
+              <ActionButton.Item buttonColor={primary} title="New Task" onPress={() => {}}>
                 <Icon name="sticky-note" style={styles.actionButtonIcon} />
               </ActionButton.Item>
-              <ActionButton.Item buttonColor='#9b59b6' title="New Note" onPress={() => {}}>
+              <ActionButton.Item buttonColor={primary} title="New Note" onPress={() => {}}>
                 <Icon name="check" style={styles.actionButtonIcon} />
               </ActionButton.Item>
             </ActionButton>
