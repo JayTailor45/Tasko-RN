@@ -9,7 +9,7 @@ import Register from '../screens/Register'
 const AuthStack = createStackNavigator({
   Login,
   Register
-})
+},{headerMode: 'none'})
 
 const AppStack = createStackNavigator({
   Home
