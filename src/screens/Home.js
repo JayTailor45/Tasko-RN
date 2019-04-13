@@ -28,10 +28,19 @@ class Home extends Component {
 
           <View style={styles.fabContainer}>
             <ActionButton buttonColor="black">
-              <ActionButton.Item buttonColor={primary} title="New Task" onPress={() => {}}>
+              <ActionButton.Item
+                  buttonColor={primary}
+                  title="New Task"
+                  onPress={() => {}
+                  }>
                 <Icon name="sticky-note" style={styles.actionButtonIcon} />
               </ActionButton.Item>
-              <ActionButton.Item buttonColor={primary} title="New Note" onPress={() => {}}>
+              <ActionButton.Item
+                  buttonColor={primary}
+                  title="New Note"
+                  onPress={
+                    () => this.props.navigation.navigate('x')
+                  }>
                 <Icon name="check" style={styles.actionButtonIcon} />
               </ActionButton.Item>
             </ActionButton>
@@ -42,7 +51,7 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Home;
 
 const styles = StyleSheet.create({
   container: {
