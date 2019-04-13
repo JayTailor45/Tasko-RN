@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, ActivityIndicator, AsyncStorage, Alert} from 're
 import {APP_NAME} from '../constants/strings'
 import {primary, primary_light} from '../constants/colors'
 import {Input, Button} from 'react-native-elements'
+import Toast, {DURATION} from 'react-native-easy-toast'
 
 import firebase from 'firebase'
 
@@ -19,7 +20,8 @@ class Login extends Component {
   signUpFire () {
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then(()=> {
-          this.props.navigation.goBack();
+          this.refs.toast.show(<View><Text style={{color: '#fff'}}>Registration successful!</Text></View>);
+          // this.props.navigation.goBack();
         })
         .catch((error) => {
           let errorCode = error.code;
@@ -61,6 +63,7 @@ class Login extends Component {
                 onPress={() =>this.props.navigation.goBack()}
             />
           </View>
+          <Toast ref="toast"/>
         </View>
     )
   }
