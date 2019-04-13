@@ -14,7 +14,7 @@ class TaskListItem extends Component {
               <Text elipsis={'end'} style={styles.taskTitleText}> Task Title </Text>
             </View>
 
-            <View>
+            <View style={{marginTop: 5}}>
               <Text elipsis={'end'} style={styles.taskDescText}> Task Details </Text>
             </View>
 
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize'
   },
   taskDescText: {
+    color: '#555',
     fontWeight: '100',
     fontSize: 18,
     textTransform: 'capitalize'
