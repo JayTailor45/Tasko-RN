@@ -32,7 +32,7 @@ class Home extends Component {
                 <Icon name="sticky-note" style={styles.actionButtonIcon} />
               </ActionButton.Item>
               <ActionButton.Item buttonColor='#9b59b6' title="New Note" onPress={() => {}}>
-                <Icon name="tasks" style={styles.actionButtonIcon} />
+                <Icon name="check" style={styles.actionButtonIcon} />
               </ActionButton.Item>
             </ActionButton>
 
